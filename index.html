@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Campus CleanTrack: a Design Thinking project on smart waste bin monitoring using Arduino.">
+<title>Campus CleanTrack – Smart Waste Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="#home">Campus CleanTrack</a>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+  <nav id="nav">
+    <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#dashboard">Dashboard</a>
+    <a href="#how">How It Works</a><a href="#components">Components</a><a href="#future">Future</a><a href="#references">References</a>
+  </nav>
+</header>
+<main>
+<section id="home" class="hero">
+  <p class="eyebrow">Design Thinking Project</p>
+  <h1>Campus CleanTrack</h1>
+  <p class="lead">A smart waste management system that tells cleaning staff when a campus bin is almost full, so bins are emptied on time.</p>
+  <a class="btn" href="#dashboard">Try the Dashboard</a>
+  <p class="note">Note: This website uses simulated readings. It is a prototype demo, not live data.</p>
+</section>
+
+<section id="problem">
+  <h2>The Problem</h2>
+  <div class="grid">
+    <article class="card"><h3>Overflowing bins</h3><p>On campus, bins in corridors, canteens and hostels can fill up before anyone notices.</p></article>
+    <article class="card"><h3>Fixed cleaning rounds</h3><p>Staff often empty bins on a fixed schedule. Some bins are still half empty, while others are already overflowing.</p></article>
+    <article class="card"><h3>Mixed waste</h3><p>When bins are full, people drop waste nearby or in the wrong bin. This makes recycling and composting harder.</p></article>
+  </div>
+</section>
+
+<section id="solution">
+  <h2>Proposed Solution</h2>
+  <p>Each bin has an ultrasonic sensor that measures how full it is. An Arduino reads the sensor and turns on LEDs. At 80% it also sounds a buzzer. Staff can then act before the bin overflows.</p>
+  <div class="grid two">
+    <article class="card"><h3>Objectives</h3><ul>
+      <li>Monitor the fill level of wet and dry waste bins.</li>
+      <li>Give an early warning at 80% capacity.</li>
+      <li>Reduce overflow and bad smell.</li>
+      <li>Build a low-cost prototype using simple parts.</li></ul></article>
+    <article class="card"><h3>Benefits</h3><ul>
+      <li>Bins are emptied when needed, not only by schedule.</li>
+      <li>A cleaner and more hygienic campus.</li>
+      <li>Staff time can be used better.</li>
+      <li>Easy to understand and to expand.</li></ul></article>
+  </div>
+  <p class="callout"><strong>Important:</strong> The sensors only detect <em>how full</em> a bin is. They do <strong>not</strong> detect the type of waste. Users must separate wet and dry waste by themselves.</p>
+</section>
+
+<section id="dashboard">
+  <h2>Interactive Dashboard</h2>
+  <p class="note">All readings here are simulated. Move the sliders or pick a demo scenario.</p>
+  <div id="alerts" class="alerts" role="status" aria-live="polite"></div>
+  <div class="grid two" id="bins"></div>
+  <div class="controls">
+    <span>Demo scenarios:</span>
+    <button class="btn small" data-s="0,0">All Empty</button>
+    <button class="btn small" data-s="35,20">Normal Day</button>
+    <button class="btn small" data-s="82,45">Wet Bin Almost Full</button>
+    <button class="btn small" data-s="55,90">Dry Bin Almost Full</button>
+    <button class="btn small" data-s="95,92">Both Full</button>
+    <button class="btn small ghost" id="reset">Reset</button>
+  </div>
+  <p class="legend">Status: below 50% = Normal (green LED) · 50% to 79% = Filling (yellow LED) · 80% and above = Full, alert (red LED and buzzer).</p>
+</section>
+
+<section id="how">
+  <h2>How It Works</h2>
+  <ol class="steps">
+    <li><strong>Measure:</strong> The HC-SR04 ultrasonic sensor, placed under the lid, sends sound waves down. It measures the time for the echo to return.</li>
+    <li><strong>Calculate:</strong> The Arduino converts the time to distance. A short distance means the waste is close to the lid, so the bin is fuller.</li>
+    <li><strong>Compare:</strong> The Arduino compares the fill level with set limits (50% and 80%).</li>
+    <li><strong>Signal:</strong> It lights a green, yellow or red LED. At 80% or more the buzzer also sounds.</li>
+    <li><strong>Act:</strong> Cleaning staff see the red LED or hear the buzzer and empty the bin.</li>
+  </ol>
+</section>
+
+<section id="components">
+  <h2>Components, Limitations and Future Work</h2>
+  <div class="grid three">
+    <article class="card"><h3>Components</h3><ul>
+      <li><strong>Arduino Uno:</strong> the controller (brain).</li>
+      <li><strong>Ultrasonic sensor (HC-SR04), 2 pcs:</strong> one per bin, measures distance.</li>
+      <li><strong>LEDs (green, yellow, red):</strong> show the status.</li>
+      <li><strong>Buzzer:</strong> sounds at 80% or more.</li>
+      <li><strong>Resistors, jumper wires, breadboard, USB power:</strong> basic circuit parts.</li></ul></article>
+    <article class="card"><h3>Limitations</h3><ul>
+      <li>It cannot detect the type of waste.</li>
+      <li>Uneven piles can give a wrong fill reading.</li>
+      <li>Very soft or angled items may reflect sound poorly.</li>
+      <li>It works only near the bin. There is no remote alert yet.</li>
+      <li>This website shows simulated values only.</li></ul></article>
+    <article class="card" id="future"><h3>Future Improvements</h3><ul>
+      <li>Add Wi-Fi (for example, ESP8266 or ESP32) to send data to a live dashboard.</li>
+      <li>Send SMS or app alerts to staff.</li>
+      <li>Use several sensors per bin for better accuracy.</li>
+      <li>Add solar power for outdoor bins.</li>
+      <li>Plan cleaning routes using collected data.</li></ul></article>
+  </div>
+</section>
+
+<section id="references">
+  <h2>References</h2>
+  <ol class="refs">
+    <li>Kaza, S., Yao, L., Bhada-Tata, P., Van Woerden, F. (2018). <em>What a Waste 2.0: A Global Snapshot of Solid Waste Management to 2050.</em> World Bank. <a href="https://openknowledge.worldbank.org/handle/10986/30317" target="_blank" rel="noopener">openknowledge.worldbank.org</a></li>
+    <li>Ministry of Environment, Forest and Climate Change, Government of India. <em>Solid Waste Management Rules, 2016</em> (rules ask for waste to be separated at source). <a href="https://cpcb.nic.in/" target="_blank" rel="noopener">cpcb.nic.in</a></li>
+    <li>Arduino. <em>Arduino Documentation</em> and <em>Language Reference</em> (pulseIn, digitalWrite, tone). <a href="https://docs.arduino.cc/" target="_blank" rel="noopener">docs.arduino.cc</a></li>
+    <li>Elec Freaks. <em>HC-SR04 Ultrasonic Ranging Module datasheet.</em> Search the title for the datasheet.</li>
+  </ol>
+  <p class="note">Please open each link and confirm the details before final submission.</p>
+</section>
+</main>
+<footer>
+  <p>Campus CleanTrack – Design Thinking Project (AR113), B.Tech AIML, Section I, 2026-27</p>
+  <p class="name">Made by Dhruv Lamba · Roll No. 27</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
