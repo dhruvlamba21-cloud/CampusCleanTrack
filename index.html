@@ -1,122 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Campus CleanTrack: a Design Thinking project on smart waste bin monitoring using Arduino.">
 <title>Campus CleanTrack – Smart Waste Management System</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-header">
-  <a class="logo" href="#home">Campus CleanTrack</a>
-  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+  <a class="logo" href="#home"><span class="mark"></span>CleanTrack</a>
   <nav id="nav">
     <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#dashboard">Dashboard</a>
-    <a href="#how">How It Works</a><a href="#components">Components</a><a href="#future">Future</a><a href="#references">References</a>
+    <a href="#how">How It Works</a><a href="#components">Components</a><a href="#faq">FAQ</a><a href="#references">References</a>
   </nav>
+  <div class="actions">
+    <button class="icon-btn" id="theme" aria-label="Switch to light mode" title="Toggle theme"></button>
+    <a class="pill light hide-s" href="#dashboard">Live Demo</a>
+    <button class="icon-btn menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
 </header>
 <main>
 <section id="home" class="hero">
-  <p class="eyebrow">Design Thinking Project</p>
-  <h1>Campus CleanTrack</h1>
-  <p class="lead">A smart waste management system that tells cleaning staff when a campus bin is almost full, so bins are emptied on time.</p>
-  <a class="btn" href="#dashboard">Try the Dashboard</a>
-  <p class="note">Note: This website uses simulated readings. It is a prototype demo, not live data.</p>
+  <svg class="star s1" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0C54 30 70 46 100 50 70 54 54 70 50 100 46 70 30 54 0 50 30 46 46 30 50 0Z"/></svg>
+  <svg class="star s2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0C54 30 70 46 100 50 70 54 54 70 50 100 46 70 30 54 0 50 30 46 46 30 50 0Z"/></svg>
+  <span class="badge-pill"><i></i> Design Thinking Project</span>
+  <h1 class="grad">Keep your campus<br>bins under control</h1>
+  <p class="lead">Campus CleanTrack tells cleaning staff when a bin is almost full, so waste is collected on time.</p>
+  <div class="row"><a class="pill light" href="#dashboard">Try the Dashboard</a><a class="pill dark" href="#how">See How It Works ▸</a></div>
+  <p class="note">Readings on this site are simulated. It is a prototype demo.</p>
+  <div class="strip"><span>Arduino Uno</span><span>HC-SR04</span><span>LEDs</span><span>Buzzer</span><span>Resistors</span><span>Breadboard</span></div>
 </section>
 
 <section id="problem">
-  <h2>The Problem</h2>
-  <div class="grid">
-    <article class="card"><h3>Overflowing bins</h3><p>On campus, bins in corridors, canteens and hostels can fill up before anyone notices.</p></article>
-    <article class="card"><h3>Fixed cleaning rounds</h3><p>Staff often empty bins on a fixed schedule. Some bins are still half empty, while others are already overflowing.</p></article>
-    <article class="card"><h3>Mixed waste</h3><p>When bins are full, people drop waste nearby or in the wrong bin. This makes recycling and composting harder.</p></article>
+  <span class="badge-pill">The Problem</span>
+  <h2 class="grad">Full bins cause<br>real trouble</h2>
+  <p class="sub">Bins in corridors, canteens and hostels can fill up before anyone notices.</p>
+  <div class="bento">
+    <article class="card wide"><h3>Overflowing bins</h3><p>Waste spills out, smells bad and attracts pests.</p></article>
+    <article class="card"><h3>Fixed rounds</h3><p>Staff clean on a schedule. Some bins are half empty, others are overflowing.</p></article>
+    <article class="card"><h3>Mixed waste</h3><p>When bins are full, people leave waste nearby or use the wrong bin.</p></article>
+    <article class="card wide"><h3>No early warning</h3><p>Nobody knows a bin is nearly full until it is too late.</p></article>
   </div>
 </section>
 
 <section id="solution">
-  <h2>Proposed Solution</h2>
-  <p>Each bin has an ultrasonic sensor that measures how full it is. An Arduino reads the sensor and turns on LEDs. At 80% it also sounds a buzzer. Staff can then act before the bin overflows.</p>
-  <div class="grid two">
+  <span class="badge-pill">Solution</span>
+  <h2 class="grad">A simple smart bin<br>that gives early alerts</h2>
+  <p class="sub">An ultrasonic sensor measures how full each bin is. An Arduino shows the status with LEDs, and a buzzer sounds at 80%.</p>
+  <div class="bento two">
     <article class="card"><h3>Objectives</h3><ul>
-      <li>Monitor the fill level of wet and dry waste bins.</li>
-      <li>Give an early warning at 80% capacity.</li>
+      <li>Monitor the fill level of wet and dry bins.</li>
+      <li>Warn staff at 80% capacity.</li>
       <li>Reduce overflow and bad smell.</li>
-      <li>Build a low-cost prototype using simple parts.</li></ul></article>
+      <li>Build a low-cost prototype.</li></ul></article>
     <article class="card"><h3>Benefits</h3><ul>
-      <li>Bins are emptied when needed, not only by schedule.</li>
-      <li>A cleaner and more hygienic campus.</li>
-      <li>Staff time can be used better.</li>
-      <li>Easy to understand and to expand.</li></ul></article>
+      <li>Bins are emptied when needed.</li>
+      <li>A cleaner, more hygienic campus.</li>
+      <li>Better use of staff time.</li>
+      <li>Easy to understand and expand.</li></ul></article>
   </div>
-  <p class="callout"><strong>Important:</strong> The sensors only detect <em>how full</em> a bin is. They do <strong>not</strong> detect the type of waste. Users must separate wet and dry waste by themselves.</p>
+  <div class="glance">
+    <div class="card"><b>2</b><span>Bins: wet and dry</span></div>
+    <div class="card"><b>80%</b><span>Alert level</span></div>
+    <div class="card"><b>3</b><span>LED colours</span></div>
+    <div class="card"><b>1</b><span>Buzzer per bin</span></div>
+  </div>
+  <p class="callout"><strong>Important:</strong> Sensors only detect <em>how full</em> a bin is. They do <strong>not</strong> detect the type of waste. Users must separate wet and dry waste by themselves.</p>
 </section>
 
 <section id="dashboard">
-  <h2>Interactive Dashboard</h2>
-  <p class="note">All readings here are simulated. Move the sliders or pick a demo scenario.</p>
+  <span class="badge-pill">Dashboard</span>
+  <h2 class="grad">Try the bins<br>yourself</h2>
+  <p class="sub">All readings are simulated. Move a slider or pick a demo scenario.</p>
   <div id="alerts" class="alerts" role="status" aria-live="polite"></div>
-  <div class="grid two" id="bins"></div>
+  <div class="bento two" id="bins"></div>
   <div class="controls">
-    <span>Demo scenarios:</span>
-    <button class="btn small" data-s="0,0">All Empty</button>
-    <button class="btn small" data-s="35,20">Normal Day</button>
-    <button class="btn small" data-s="82,45">Wet Bin Almost Full</button>
-    <button class="btn small" data-s="55,90">Dry Bin Almost Full</button>
-    <button class="btn small" data-s="95,92">Both Full</button>
-    <button class="btn small ghost" id="reset">Reset</button>
+    <button class="pill dark" data-s="0,0">All Empty</button>
+    <button class="pill dark" data-s="35,20">Normal Day</button>
+    <button class="pill dark" data-s="82,45">Wet Almost Full</button>
+    <button class="pill dark" data-s="55,90">Dry Almost Full</button>
+    <button class="pill dark" data-s="95,92">Both Full</button>
+    <button class="pill light" id="reset">Reset</button>
   </div>
-  <p class="legend">Status: below 50% = Normal (green LED) · 50% to 79% = Filling (yellow LED) · 80% and above = Full, alert (red LED and buzzer).</p>
+  <p class="note">Below 50% = Normal (green LED) · 50–79% = Filling (yellow LED) · 80% and above = Full (red LED and buzzer).</p>
 </section>
 
 <section id="how">
-  <h2>How It Works</h2>
-  <ol class="steps">
-    <li><strong>Measure:</strong> The HC-SR04 ultrasonic sensor, placed under the lid, sends sound waves down. It measures the time for the echo to return.</li>
-    <li><strong>Calculate:</strong> The Arduino converts the time to distance. A short distance means the waste is close to the lid, so the bin is fuller.</li>
-    <li><strong>Compare:</strong> The Arduino compares the fill level with set limits (50% and 80%).</li>
-    <li><strong>Signal:</strong> It lights a green, yellow or red LED. At 80% or more the buzzer also sounds.</li>
-    <li><strong>Act:</strong> Cleaning staff see the red LED or hear the buzzer and empty the bin.</li>
-  </ol>
+  <span class="badge-pill">Workflow</span>
+  <h2 class="grad">How the system<br>works</h2>
+  <div class="steps">
+    <div class="card"><em>01</em><h3>Measure</h3><p>The HC-SR04 sensor under the lid sends sound waves down and times the echo.</p></div>
+    <div class="card"><em>02</em><h3>Calculate</h3><p>The Arduino turns the echo time into distance. Shorter distance means a fuller bin.</p></div>
+    <div class="card"><em>03</em><h3>Compare</h3><p>It checks the fill level against the 50% and 80% limits.</p></div>
+    <div class="card"><em>04</em><h3>Signal</h3><p>A green, yellow or red LED lights up. At 80% the buzzer also sounds.</p></div>
+    <div class="card"><em>05</em><h3>Act</h3><p>Staff see the red LED or hear the buzzer and empty the bin.</p></div>
+  </div>
 </section>
 
 <section id="components">
-  <h2>Components, Limitations and Future Work</h2>
-  <div class="grid three">
+  <span class="badge-pill">Build</span>
+  <h2 class="grad">Components, limits<br>and next steps</h2>
+  <div class="bento three">
     <article class="card"><h3>Components</h3><ul>
-      <li><strong>Arduino Uno:</strong> the controller (brain).</li>
-      <li><strong>Ultrasonic sensor (HC-SR04), 2 pcs:</strong> one per bin, measures distance.</li>
-      <li><strong>LEDs (green, yellow, red):</strong> show the status.</li>
+      <li><strong>Arduino Uno:</strong> the controller.</li>
+      <li><strong>HC-SR04 sensors (2):</strong> measure distance.</li>
+      <li><strong>LEDs:</strong> green, yellow, red status.</li>
       <li><strong>Buzzer:</strong> sounds at 80% or more.</li>
-      <li><strong>Resistors, jumper wires, breadboard, USB power:</strong> basic circuit parts.</li></ul></article>
+      <li><strong>Resistors, wires, breadboard, USB power.</strong></li></ul></article>
     <article class="card"><h3>Limitations</h3><ul>
-      <li>It cannot detect the type of waste.</li>
-      <li>Uneven piles can give a wrong fill reading.</li>
-      <li>Very soft or angled items may reflect sound poorly.</li>
-      <li>It works only near the bin. There is no remote alert yet.</li>
-      <li>This website shows simulated values only.</li></ul></article>
-    <article class="card" id="future"><h3>Future Improvements</h3><ul>
-      <li>Add Wi-Fi (for example, ESP8266 or ESP32) to send data to a live dashboard.</li>
-      <li>Send SMS or app alerts to staff.</li>
-      <li>Use several sensors per bin for better accuracy.</li>
+      <li>Cannot detect the type of waste.</li>
+      <li>Uneven piles can give a wrong reading.</li>
+      <li>Soft or angled items may reflect sound poorly.</li>
+      <li>No remote alerts yet.</li>
+      <li>This website uses simulated values only.</li></ul></article>
+    <article class="card"><h3>Future Improvements</h3><ul>
+      <li>Add Wi-Fi (ESP8266 or ESP32) for a live dashboard.</li>
+      <li>Send SMS or app alerts.</li>
+      <li>Use more sensors per bin.</li>
       <li>Add solar power for outdoor bins.</li>
-      <li>Plan cleaning routes using collected data.</li></ul></article>
+      <li>Plan cleaning routes from the data.</li></ul></article>
+  </div>
+</section>
+
+<section id="faq">
+  <span class="badge-pill">FAQ</span>
+  <h2 class="grad">Your questions<br>answered</h2>
+  <div class="faq">
+    <details><summary>Does the system sort waste?</summary><p>No. It only measures fill level. People must put wet and dry waste in the correct bins.</p></details>
+    <details><summary>Is the data on this site real?</summary><p>No. All readings are simulated to demonstrate the idea.</p></details>
+    <details><summary>Why use an ultrasonic sensor?</summary><p>It is cheap, easy to use with Arduino, and measures distance without touching the waste.</p></details>
+    <details><summary>What happens at 80%?</summary><p>The red LED turns on, the buzzer sounds and the dashboard shows an alert.</p></details>
   </div>
 </section>
 
 <section id="references">
-  <h2>References</h2>
+  <span class="badge-pill">Sources</span>
+  <h2 class="grad">References</h2>
   <ol class="refs">
     <li>Kaza, S., Yao, L., Bhada-Tata, P., Van Woerden, F. (2018). <em>What a Waste 2.0: A Global Snapshot of Solid Waste Management to 2050.</em> World Bank. <a href="https://openknowledge.worldbank.org/handle/10986/30317" target="_blank" rel="noopener">openknowledge.worldbank.org</a></li>
-    <li>Ministry of Environment, Forest and Climate Change, Government of India. <em>Solid Waste Management Rules, 2016</em> (rules ask for waste to be separated at source). <a href="https://cpcb.nic.in/" target="_blank" rel="noopener">cpcb.nic.in</a></li>
-    <li>Arduino. <em>Arduino Documentation</em> and <em>Language Reference</em> (pulseIn, digitalWrite, tone). <a href="https://docs.arduino.cc/" target="_blank" rel="noopener">docs.arduino.cc</a></li>
-    <li>Elec Freaks. <em>HC-SR04 Ultrasonic Ranging Module datasheet.</em> Search the title for the datasheet.</li>
+    <li>Ministry of Environment, Forest and Climate Change, Government of India. <em>Solid Waste Management Rules, 2016.</em> <a href="https://cpcb.nic.in/" target="_blank" rel="noopener">cpcb.nic.in</a></li>
+    <li>Arduino. <em>Arduino Documentation.</em> <a href="https://docs.arduino.cc/" target="_blank" rel="noopener">docs.arduino.cc</a></li>
+    <li>Elec Freaks. <em>HC-SR04 Ultrasonic Ranging Module datasheet.</em></li>
   </ol>
-  <p class="note">Please open each link and confirm the details before final submission.</p>
 </section>
 </main>
 <footer>
-  <p>Campus CleanTrack – Design Thinking Project (AR113), B.Tech AIML, Section I, 2026-27</p>
+  <p>Campus CleanTrack – Design Thinking Project (AR113) · B.Tech AIML, Section I · 2026-27</p>
+  <div class="big" aria-hidden="true">CleanTrack</div>
   <p class="name">Made by Dhruv Lamba · Roll No. 27</p>
 </footer>
 <script src="script.js"></script>

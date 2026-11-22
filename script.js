@@ -67,5 +67,17 @@
   });
   nav.addEventListener('click', function () { nav.classList.remove('open'); menu.setAttribute('aria-expanded', false); });
 
+  var root = document.documentElement, tbtn = document.getElementById('theme');
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    tbtn.textContent = t === 'dark' ? '☀' : '☾';
+    tbtn.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'light' : 'dark') + ' mode');
+    try { localStorage.setItem('theme', t); } catch (e) {}
+  }
+  tbtn.addEventListener('click', function () {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+  setTheme(root.getAttribute('data-theme'));
+
   render();
 })();

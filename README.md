@@ -6,7 +6,7 @@ A Design Thinking project website (AR113). It explains a smart bin idea using Ar
 
 ## Files
 - `index.html` – page content
-- `style.css` – black-and-white matte design
+- `style.css` – black-and-white matte design, with dark and light mode
 - `script.js` – dashboard logic (fill levels, 80% alerts, scenarios, reset)
 
 ## Run locally
